@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boris G Consulting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            background: #fefefe;
+            color: #2c2c2c;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .brush-stroke {
+            position: absolute;
+            background: #1a1a1a;
+            border-radius: 50px;
+            opacity: 0.1;
+            animation: fadeInStroke 2s ease-in-out;
+        }
+        
+        .stroke-1 {
+            width: 300px;
+            height: 8px;
+            top: 15%;
+            right: -100px;
+            transform: rotate(-15deg);
+            animation-delay: 0.5s;
+        }
+        
+        .stroke-2 {
+            width: 200px;
+            height: 12px;
+            top: 60%;
+            left: -80px;
+            transform: rotate(25deg);
+            animation-delay: 1s;
+        }
+        
+        .stroke-3 {
+            width: 150px;
+            height: 6px;
+            bottom: 20%;
+            right: 10%;
+            transform: rotate(-8deg);
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes fadeInStroke {
+            from { opacity: 0; transform: scale(0.8) rotate(var(--rotation, 0deg)); }
+            to { opacity: 0.1; transform: scale(1) rotate(var(--rotation, 0deg)); }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2c2c2c, transparent);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.8;
+            margin-top: 30px;
+        }
+        
+        .content {
+            animation: fadeInUp 1.5s ease-out 0.3s both;
+        }
+        
+        .intro {
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 30px;
+            border-left: 3px solid #1a1a1a;
+            background: linear-gradient(90deg, rgba(0,0,0,0.02), transparent);
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding: 20px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -30px;
+            width: 20px;
+            height: 1px;
+            background: #1a1a1a;
+        }
+        
+        .journey {
+            display: grid;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .journey-item {
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+        
+        .journey-item:hover {
+            background: rgba(0,0,0,0.04);
+            border-left-color: #1a1a1a;
+            transform: translateX(5px);
+        }
+        
+        .journey-role {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .tao-quote {
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 60px 0;
+            padding: 40px 20px;
+            position: relative;
+            opacity: 0.9;
+        }
+        
+        .tao-quote::before,
+        .tao-quote::after {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .tao-quote::before {
+            top: 0;
+            left: 20px;
+        }
+        
+        .tao-quote::after {
+            bottom: -20px;
+            right: 20px;
+        }
+        
+        .personal {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        .pencil-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #000 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, #000 0.5px, transparent 0.5px);
+            background-size: 50px 50px, 30px 30px;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .intro {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            
+            .stroke-1, .stroke-2, .stroke-3 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pencil-texture"></div>
+    <div class="brush-stroke stroke-1"></div>
+    <div class="brush-stroke stroke-2"></div>
+    <div class="brush-stroke stroke-3"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">Boris G Consulting</h1>
+            <p class="subtitle">道 • The Way of Wellness</p>
+        </header>
+        
+        <main class="content">
+            <section class="intro">
+                I am simply someone who has been fortunate to learn from many walks of life. My approach to wellness draws humbly from the Tao Te Ching, and I have had the privilege of translating these ancient teachings into Hebrew, hoping to share their gentle wisdom with others.
+            </section>
+            
+            <div class="tao-quote">
+                The sage does not try anything, yet nothing is left undone.<br>
+                道可道，非常道
+            </div>
+            
+            <section class="section">
+                <h2 class="section-title">The Journey</h2>
+                <div class="journey">
+                    <div class="journey-item">
+                        <div class="journey-role">Montessori Teacher</div>
+                        <p>The children taught me far more than I ever taught them—about wonder, presence, and seeing the world with fresh eyes each day.</p>
+                    </div>
+                    
+                    <div class="journey-item">
+                        <div class="journey-role">Infantry Commander</div>
+                        <p>Service taught me about humility and the strength that comes not from hardness, but from flexibility and understanding one's place in something larger.</p>
+                    </div>
+                    
+                    <div class="journey-item">
+                        <div class="journey-role">Plumber</div>
+                        <p>Water became my teacher—showing me that the most persistent force moves gently, finding the path of least resistance and gradually transforming everything it touches.</p>
+                    </div>
+                    
+                    <div class="journey-item">
+                        <div class="journey-role">Technology</div>
+                        <p>I learned that the most effective leadership often means stepping back, creating space for others to flourish, and remembering that the best solutions emerge naturally when we stop forcing them.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2 class="section-title">Approach</h2>
+                <p>I am still learning, still walking this path. My diverse experiences have been my teachers, and the Tao Te Ching continues to guide me toward understanding that wellness isn't something I can give to others—it's something we discover together when we create space for natural healing to unfold.</p>
+                
+                <p style="margin-top: 20px;">The Hebrew translation was born from a desire to sit with these teachings more deeply. If it serves others in their own journey, I am grateful. I believe ancient wisdom belongs to everyone, not to any one person or teacher.</p>
+            </section>
+            
+            <div class="personal">
+                <p>I am blessed to share life with my wonderful wife and our two boys, who remind me daily that the deepest teachings come not from books but from love, laughter, and the simple moments we often overlook. They are my greatest teachers in the art of being present.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
